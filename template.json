@@ -9,14 +9,19 @@
     {
       "type": "virtualbox-iso",
       "guest_os_type": "Debian_64",
-      "disk_size": 6000,
+      "disk_size": 10000,
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "1024"],
+	["modifyvm", "{{.Name}}", "--cpus", "2"]
+      ],
       "iso_url": "http://d-i.debian.org/daily-images/amd64/daily/netboot/mini.iso",
-      "iso_checksum": "CHECKSUM",
+      "iso_checksum": "899a47cec16a488743d053c8f3624a6e",
+      "iso_url": http://d-i.debian.org/daily-images/amd64/daily/netboot/MD5SUMS,
       "iso_checksum_type": "md5",
       "http_directory": "http",
       "ssh_username": "{{user `username`}}",
       "ssh_password": "{{user `password`}}",
-      "ssh_wait_timeout": "40m",
+      "ssh_wait_timeout": "360m",
       "shutdown_command": "echo '{{user `password`}}' | sudo -S halt -p",
       "headless": true,
       "boot_wait": "5s",
